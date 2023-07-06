@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
-import Header from '../../Components/Header/Header';
 import Search from '../../Components/Search/Search';
 import Select from '../../Components/shared/Select/Select';
 import classes from './Home.module.scss';
@@ -38,7 +37,6 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
       <Search />
       <div className={classes.select__container}>
         <div className={classes.select__content}>

@@ -5,12 +5,14 @@ import dotenv from 'dotenv';
 import Home from './Pages/Home';
 import Explore from './Pages/Explore/Explore';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
+import Header from './Components/Header/Header';
 
 dotenv.config();
 
 export const App: React.FC = () => {
   return (
     <div className="starter">
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
