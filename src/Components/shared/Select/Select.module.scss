@@ -24,9 +24,11 @@ $indent-default: 4px;
     height: $height-default;
     margin-top: $indent-default;
     padding: 10px;
+
     border: 1px solid $main-color;
     cursor: pointer;
     color: $main-color;
+    font-size: 16px;
 
     &:hover {
       background-color: $hover-background-color;
@@ -43,7 +45,7 @@ $indent-default: 4px;
     top: 100%;
     left: 0;
     width: 100%;
-    padding: 8px 0;
+    padding: $indent-default 0;
     background-color: $white-color;
     border: 1px solid $elements-color;
     transform: scaleY(0);
@@ -52,7 +54,7 @@ $indent-default: 4px;
 
     &--open {
       margin-top: $indent-default;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
       transform: scaleY(1);
       transition: transform 0.3 ease;
     }
@@ -61,6 +63,7 @@ $indent-default: 4px;
   &__item {
     height: $height-default;
     list-style: none;
+    padding: $indent-default 10px;
     color: $secondary-color;
     cursor: pointer;
 

@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Explore from './Pages/Explore/Explore';
 import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import Header from './Components/Header/Header';
+import PopUpPhoto from './Pages/PopUpPhoto/PopUpPhoto';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ export const App: React.FC = () => {
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="/photos">
           <Route index element={<Home />} />
+          <Route path=":slug" element={<PopUpPhoto />} />
         </Route>
         <Route path="/explore" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />

@@ -1,0 +1,52 @@
+@use "../../styles/vars" as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__button {
+    background-color: $white-color;
+    height: 35px;
+    width: 35px;
+    margin-top: 20px;
+    margin-right: 5px;
+
+    border-radius: 50%;
+    cursor: pointer;
+    color: $main-color;
+
+    &--active {
+      background-color: $main-color;
+      color: $white-color;
+    }
+
+    &:hover {
+      background-color: $secondary-color;
+      color: $white-color;
+    }
+  }
+
+  &__arrow {
+    &--disabled {
+      background-color: $white-color;
+      color: $main-color;
+
+      &:hover {
+        background-color: $white-color;
+        color: $main-color;
+        cursor: default;
+      }
+    }
+  }
+}
+
+.list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    list-style: none;
+  }
+}

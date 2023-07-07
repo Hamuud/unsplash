@@ -1,0 +1,14 @@
+$icon-size: 20px;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  &__icon {
+    margin-right: 5px;
+    height: $icon-size;
+    width: $icon-size;
+    background-image: url('../../../img/share.svg');
+  }
+}

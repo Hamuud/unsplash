@@ -20,5 +20,5 @@ export interface Photo {
   'liked_by_user': boolean,
   'user': User,
   'views': number,
-  'dowloads': number,
+  'downloads': number,
 }
