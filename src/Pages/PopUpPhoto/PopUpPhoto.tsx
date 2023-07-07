@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getImage } from '../../api/photo.api';
 import { Photo } from '../../types/Photo';
 import classes from './PopUpPhoto.module.scss';
@@ -29,23 +29,29 @@ const PopUpPhoto = () => {
     <div className={classes.container}>
       <div className={classes.user}>
         <div>
-          <div className={classes.user__container}>
-            <img 
-              src={photo?.user.profile_image.small}
-              alt="Profile avatar"
-              className={classes.user__photo}
-            />
+          <a 
+            href={photo?.user.links.html}
+            target="_blank"
+            className={classes.user__link}
+          >
+            <div className={classes.user__container}>
+              <img 
+                src={photo?.user.profile_image.small}
+                alt="Profile avatar"
+                className={classes.user__photo}
+              />
 
-            <div className={classes.user__info}>
-              <h2 className={classes.user__name}>
-                {photo?.user.name}
-              </h2>
+              <div className={classes.user__info}>
+                <h2 className={classes.user__name}>
+                  {photo?.user.name}
+                </h2>
 
-              <h3 className={classes.user__username}>
-                {photo?.user.username}
-              </h3>
+                <h3 className={classes.user__username}>
+                  {photo?.user.username}
+                </h3>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
 
         <div className={classes.button}>
@@ -109,6 +115,17 @@ const PopUpPhoto = () => {
             url={window.location.href}
           />
         </div>
+      </div>
+      <div className={classes.tags}>
+        {photo?.tags.map(tag => (
+          <Link
+            key={tag.title}
+            to={`/collection/${tag.title}`}
+            className={classes.tags__link}
+          >
+            {tag.title}
+          </Link>
+        ))}
       </div>
     </div>
   );

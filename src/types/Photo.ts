@@ -21,4 +21,7 @@ export interface Photo {
   'user': User,
   'views': number,
   'downloads': number,
+  'tags': [
+    { 'title': 'cactus' },
+  ]
 }

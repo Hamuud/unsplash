@@ -15,7 +15,7 @@ const Gallery: React.FC<Props> = ({ photos, column }) => {
   return (
     <div className={classes.gallery}>
       <Masonry columns={column.value} spacing={2}>
-        {photos.map((photo) => (
+        {photos?.map((photo) => (
           <Link
             to={`/photos/${photo.slug}`}
             key={photo.slug}
