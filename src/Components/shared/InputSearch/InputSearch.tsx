@@ -49,7 +49,7 @@ const InputSearch: React.FC = memo(() => {
       onSubmit={handleSubmit}
     >
       <input
-        type="search"
+        type="text"
         className={classes.input}
         placeholder="Search high-resolution images"
         value={search}

@@ -1,12 +1,20 @@
 @use "../../styles/vars" as *;
+@use "../../styles/mixins" as *;
 
-.header {
-  width: 100%;
-  position: relative;
+
+.section {
   position: sticky;
   top: 0;
-  background: $white-color;
   z-index: 999;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  background: $white-color;
 }
 
 .container {
@@ -17,12 +25,17 @@
 }
 
 .img {
+  width: 100%;
   object-fit: contain;
 }
 
 .img__container {
   display: flex;
   align-items: center;
-  width: 150px;
+  width: 75px;
   margin-right: 10px;
+
+  @include onTablet {
+    width: 150px;
+  }
 }

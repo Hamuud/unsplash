@@ -13,27 +13,29 @@ dotenv.config();
 
 export const App: React.FC = () => {
   return (
-    <div className="starter">
+    <div>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <div className="starter">
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
 
-        <Route path="/photos">
-          <Route index element={<Home />} />
-          <Route path=":slug" element={<PopUpPhoto />} />
-        </Route>
+          <Route path="/photos">
+            <Route index element={<Home />} />
+            <Route path=":slug" element={<PopUpPhoto />} />
+          </Route>
 
-        <Route path="/search" element={<SearchPage />}>
-          <Route index element={<SearchPage />} />
-        </Route>
+          <Route path="/search" element={<SearchPage />}>
+            <Route index element={<SearchPage />} />
+          </Route>
 
-        <Route path="/collection" element={<Collection />}>
-          <Route path=":tag" element={<Collection />} />
-        </Route>
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+          <Route path="/collection" element={<Collection />}>
+            <Route path=":tag" element={<Collection />} />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </div>
     </div>
   );
 };

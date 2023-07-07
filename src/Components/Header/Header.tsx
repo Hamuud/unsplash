@@ -6,23 +6,25 @@ import Input from '../shared/Input/Input';
 
 const Header = () => {
   return (
-    <header className={classes.header}>
-      <div className={classes.container}>
-        <div>
-          <Link
-            to="/"
-            className={classes.img__container}
-          >
-            <img
-              src={unsplashLogo}
-              className={classes.img}
-              alt="Unsplash home link"
-            />
-          </Link>
+    <div className={classes.section}>
+      <header className={classes.header}>
+        <div className={classes.container}>
+          <div>
+            <Link
+              to="/"
+              className={classes.img__container}
+            >
+              <img
+                src={unsplashLogo}
+                className={classes.img}
+                alt="Unsplash home link"
+              />
+            </Link>
+          </div>
         </div>
         <Input />
-      </div>
-    </header>
+      </header>
+    </div>
   );
 };
 
