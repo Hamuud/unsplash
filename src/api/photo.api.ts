@@ -14,5 +14,5 @@ export const getImage = (slug: string) => {
 };
 
 export const getImagesByPageAndSearch = (query: string, numPage: number) => {
-  return photo.get<SearchType>(`${photoLink}&query=${query}&page=${numPage}`);
+  return photo.get<SearchType>(`/search/${photoLink}&query=${query}&page=${numPage}`);
 };

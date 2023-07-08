@@ -1,0 +1,30 @@
+@use '../../styles/mixins' as *;
+
+.select {
+  &__container {
+    width: 320px;
+    margin: 5px auto;
+
+    @include onTablet {
+      width: 640px;
+      margin: 10px auto;
+    }
+
+    @include onDesktop {
+      width: 1200px;
+      margin: 20px auto;
+    }
+  }
+
+  &__content {
+    width: 100px;
+
+    @include onTablet {
+      width: 150px;
+    }
+
+    @include onDesktop {
+      width: 200px;
+    }
+  }
+}

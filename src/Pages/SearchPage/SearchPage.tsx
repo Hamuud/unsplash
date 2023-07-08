@@ -60,7 +60,7 @@ const SearchPage = () => {
         </div>
       </div>
       <Gallery
-        photos={photos.result}
+        photos={photos.results}
         column={column}
       />
       <Pagination

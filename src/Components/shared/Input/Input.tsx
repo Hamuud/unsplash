@@ -49,6 +49,7 @@ const Input = () => {
         placeholder="Search high-resolution images"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        required
       />
     </form>
   );

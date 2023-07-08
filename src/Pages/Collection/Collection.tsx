@@ -63,7 +63,7 @@ const Collection = () => {
       </div>
       <Gallery
         column={selectedOption}
-        photos={photos.result}
+        photos={photos.results}
       />
       <Pagination
         currentPage={page}
