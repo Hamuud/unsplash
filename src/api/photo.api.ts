@@ -2,7 +2,7 @@ import { photo } from '../utils/fetchPhotos';
 import { Photo } from '../types/Photo';
 import { SearchType } from '../types/SearchType';
 
-const access = 'A0HW69BTG2A3ATGz32VP3wAK_X8JsVygQhRA5ZTcVIE';
+const access = '3pncTkuSqOQXl1jeguvX43dp7a_bU5PvPlS6Cg-8y_4';
 const photoLink = `photos?client_id=${access}`;
 
 export const getImagesByPage = (numPage: number) => {
