@@ -5,10 +5,11 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 320px;
+  padding: 5px;
   margin: 0 auto;
   background: $white-color;
-  column-gap: 20px;
-  display: flex;
+  display: grid;
+  place-items: center;
 
   @include onTablet {
     max-width: 640px;
@@ -21,6 +22,15 @@
   &__img {
     cursor: zoom-in;
     width: 100%;
+  }
+}
+
+.masonry__item {
+  margin: 0;
+
+  @include onMobile {
+    display: grid;
+    grid-column: 1;
   }
 }
 

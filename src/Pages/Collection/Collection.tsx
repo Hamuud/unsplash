@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 // import { SearchType } from '../../types/SearchType';
 import { DropdownOption } from '../../types/DropdownOption';
@@ -27,9 +27,17 @@ const Collection = () => {
     setSelectedOption(newOption);
   };
 
+  const divRef = useRef(null);
+
   const onPageChange = (newPage: number) => {
+    if (divRef) {
+      divRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
     setPage(newPage);
   };
+
+  const [isPhone, setIsPhone] = useState(false);
 
   const loadPhotos = async () => {
     try {
@@ -43,6 +51,20 @@ const Collection = () => {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsPhone(window.innerWidth < 640);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     loadPhotos();
   }, [query, page]);
 
@@ -51,24 +73,27 @@ const Collection = () => {
   }
 
   return (
-    <div>
-      <div className={classes.select__container}>
-        <div className={classes.select__content}>
-          <Select
-            selectedOption={selectedOption}
-            options={COUNT_OPTIONS}
-            onChange={onSelectChange}
-          />
+    <div className={classes.container}>
+      <div ref={divRef}>
+        <div className={classes.select__container}>
+          <div className={classes.select__content}>
+            <Select
+              selectedOption={selectedOption}
+              options={COUNT_OPTIONS}
+              onChange={onSelectChange}
+            />
+          </div>
         </div>
+        <Gallery
+          isPhone={isPhone}
+          column={selectedOption}
+          photos={photos.results}
+        />
+        <Pagination
+          currentPage={page}
+          onChange={onPageChange}
+        />
       </div>
-      <Gallery
-        column={selectedOption}
-        photos={photos.results}
-      />
-      <Pagination
-        currentPage={page}
-        onChange={onPageChange}
-      />
     </div>
   );
 };

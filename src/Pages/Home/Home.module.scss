@@ -1,18 +1,40 @@
 @use '../../styles/mixins' as *;
 
+.container {
+  max-width: 320px;
+  padding: 5px;
+  margin: 0 auto;
+
+  @include onTablet {
+    max-width: 640px;
+    padding: 5px;
+    margin: 0 auto;
+  }
+
+  @include onDesktop {
+    max-width: 1200px;
+    padding: 5px;
+    margin: 0 auto;
+  }
+}
+
 .select {
   &__container {
+    box-sizing: border-box;
     width: 320px;
-    margin: 5px auto;
+    padding: 8px;
+    margin: 0 auto;
+    display: none;
 
     @include onTablet {
       width: 640px;
-      margin: 10px auto;
+      margin: 0 auto;
+      display: block;
     }
 
     @include onDesktop {
       width: 1200px;
-      margin: 20px auto;
+      margin: 0 auto;
     }
   }
 

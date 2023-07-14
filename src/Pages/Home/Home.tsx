@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Search from '../../Components/Search/Search';
 import Select from '../../Components/shared/Select/Select';
 import classes from './Home.module.scss';
@@ -17,13 +17,19 @@ const Home = () => {
 
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [selectedOption, setSelectedOption] = useState(COUNT_OPTIONS[0]);
+  const [isPhone, setIsPhone] = useState(false);
   const [page, setPage] = useState(1);
+  const divRef = useRef(null);
 
   const onSelectChange = (newOption: DropdownOption) => {
     setSelectedOption(newOption);
   };
 
   const onPageChange = (newPage: number) => {
+    if (divRef) {
+      divRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
     setPage(newPage);
   };
 
@@ -38,29 +44,48 @@ const Home = () => {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsPhone(window.innerWidth < 640);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     loadPhotos();
   }, [page]);
 
   return (
     <div>
       <Search />
-      <div className={classes.select__container}>
-        <div className={classes.select__content}>
-          <Select
-            selectedOption={selectedOption}
-            options={COUNT_OPTIONS}
-            onChange={onSelectChange}
+      <div ref={divRef}>
+        <div className={classes.container}>
+          <div className={classes.select__container}>
+            <div className={classes.select__content}>
+              <Select
+                selectedOption={selectedOption}
+                options={COUNT_OPTIONS}
+                onChange={onSelectChange}
+              />
+            </div>
+          </div>
+          <Gallery
+            column={selectedOption}
+            photos={photos}
+            isPhone={isPhone}
+          />
+          <Pagination
+            currentPage={page}
+            onChange={onPageChange}
           />
         </div>
       </div>
-      <Gallery
-        column={selectedOption}
-        photos={photos}
-      />
-      <Pagination
-        currentPage={page}
-        onChange={onPageChange}
-      />
     </div>
   );
 };
